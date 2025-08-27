@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20px;
+    }
+    .active {
+      display: flex;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #ff6f91;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- Slide 1 -->
+  <div class="slide active">
+    <h1>🎉 Happy 17th Sayangku 🎂</h1>
+    <p>Wish u all the best dari aku yachh!</p>
+    <button class="btn" onclick="playMusic()">🎶 Play Music</button>
+    <button class="btn" onclick="nextSlide()">Next ➡</button>
+    <audio id="music" src="lagu.mp3.mp3"></audio>
+  </div>
+
+  <!-- Slide 2 (Letter) -->
+  <div class="slide">
+    <h2>💌 Special Letter 💌</h2>
+    <p>
+      hi sayang, ciee udah mw bikin ktp nich, seneng deh punya pacar yang kuat buat jalanin kesehariannya tanpa banyak ngeluh,  
+      aku bener bener bangga sama kamu sayang, makasih udah ada di dunia ini ya, love uu ❤
+    </p>
+    <button class="btn" onclick="nextSlide()">Back to Start 🔄</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    function showSlide(n) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === n) slide.classList.add("active");
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function playMusic() {
+      document.getElementById("music").play();
+    }
+  </script>
+</body>
+</html>
